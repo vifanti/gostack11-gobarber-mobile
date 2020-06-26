@@ -109,9 +109,7 @@ const SignIn: React.FC = () => {
                 icon="mail"
                 placeholder="E-mail"
                 returnKeyType="next"
-                onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
-                }}
+                onSubmitEditing={() => passwordInputRef.current?.focus()}
               />
 
               <Input
@@ -121,21 +119,16 @@ const SignIn: React.FC = () => {
                 icon="lock"
                 placeholder="Senha"
                 returnKeyType="send"
-                onSubmitEditing={() => {
-                  formRef.current?.submitForm();
-                }}
+                onSubmitEditing={() => formRef.current?.submitForm()}
               />
 
-              <Button
-                onPress={() => {
-                  formRef.current?.submitForm();
-                }}
-              >
+              <Button onPress={() => formRef.current?.submitForm()}>
                 Entrar
               </Button>
             </Form>
             <ForgotPassword
               onPress={() => {
+                // eslint-disable-next-line no-console
                 console.log('depois');
               }}
             >

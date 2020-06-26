@@ -104,9 +104,7 @@ const SignUp: React.FC = () => {
                 icon="user"
                 placeholder="Nome"
                 returnKeyType="next"
-                onSubmitEditing={() => {
-                  emailInputRef.current?.focus();
-                }}
+                onSubmitEditing={() => emailInputRef.current?.focus()}
               />
 
               <Input
@@ -118,9 +116,7 @@ const SignUp: React.FC = () => {
                 icon="mail"
                 placeholder="E-mail"
                 returnKeyType="next"
-                onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
-                }}
+                onSubmitEditing={() => passwordInputRef.current?.focus()}
               />
 
               <Input
@@ -131,9 +127,7 @@ const SignUp: React.FC = () => {
                 icon="lock"
                 placeholder="Senha"
                 returnKeyType="send"
-                onSubmitEditing={() => {
-                  formRef.current?.submitForm();
-                }}
+                onSubmitEditing={() => formRef.current?.submitForm()}
               />
 
               <Button onPress={() => formRef.current?.submitForm()}>
