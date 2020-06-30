@@ -134,30 +134,27 @@ const SignUp: React.FC = () => {
         takePhotoButtonTitle: 'Usar câmera',
         chooseFromLibraryButtonTitle: 'Escolher da galeria',
       },
-      async (response) => {
+      (response) => {
         if (response.didCancel) {
           return;
         }
 
         if (response.error) {
-          Alert.alert('Erro ao atualizar seu avatar.');
+          Alert.alert('Erro ao atualizar seu avatar');
           return;
         }
 
         const data = new FormData();
 
         data.append('avatar', {
-          type: 'image/jpg',
+          type: 'image/jpeg',
           name: `${user.id}.jpg`,
           uri: response.uri,
         });
 
-        const response2 = await api.patch('users/avatar', data);
-        console.log(response2);
-
-        // .then((apiResponse) => {
-        //   updateUser(apiResponse.data);
-        // });
+        api.patch('/users/avatar', data).then((apiReponse) => {
+          updateUser(apiReponse.data);
+        });
       },
     );
   }, [updateUser, user.id]);

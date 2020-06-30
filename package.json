@@ -7,15 +7,15 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "reverse": "adb reverse tcp:3333 tcp:3333"
+    "reverse": "adb reverse tcp:3333 tcp:3333",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.10.1",
     "@react-native-community/datetimepicker": "^2.4.2",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/native": "^5.2.3",
-    "@react-navigation/stack": "^5.2.18",
+    "@react-navigation/stack": "^5.2.19",
     "@unform/core": "^2.1.0",
     "@unform/mobile": "^2.1.0",
     "axios": "^0.19.2",
@@ -36,6 +36,7 @@
     "@babel/core": "^7.6.2",
     "@babel/runtime": "^7.6.2",
     "@react-native-community/eslint-config": "^1.0.0",
+    "@testing-library/jest-native": "^3.1.0",
     "@types/jest": "^24.0.24",
     "@types/react-native": "^0.62.0",
     "@types/react-native-vector-icons": "^6.4.5",
@@ -55,14 +56,27 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "jest": "^24.9.0",
-    "jetifier": "^1.6.6",
     "metro-react-native-babel-preset": "^0.58.0",
     "prettier": "^2.0.5",
+    "react-native-testing-library": "^2.1.0",
     "react-test-renderer": "16.11.0",
     "typescript": "^3.8.3"
   },
   "jest": {
     "preset": "react-native",
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
+    ],
+    "setupFiles": [
+      "./src/setUpTests.ts",
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ],
+    "collectCoverageFrom": [
+      "src/pages/**/*.tsx",
+      "src/components/**/*.tsx",
+      "src/hooks/*.tsx",
+      "!src/hooks/index.tsx"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
